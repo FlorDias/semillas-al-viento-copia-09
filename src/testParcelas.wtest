@@ -1,0 +1,31 @@
+import plantas.*
+import parcelas.*
+import inta.*
+
+test "Parcelas" {
+
+	const parcela = new Parcela( ancho = 10, largo = 1, horasDeSol = 10 )
+	
+	assert.equals(10,parcela.superficie())
+	assert.equals(5,parcela.cantidadMaximaDePlantasQueTolera())
+
+}
+
+test "Parcelas con 5 Plantas de Soja " {
+	
+	// 5 Plantas de soja
+	
+	const soja1 = new Soja (altura = 2, anioDeObtencion = 2010 )
+	const soja2 = new Soja (altura = 2, anioDeObtencion = 2010 )
+	const soja3 = new Soja (altura = 2, anioDeObtencion = 2010 )
+	const soja4 = new Soja (altura = 2, anioDeObtencion = 2010 )
+	const soja5 = new Soja (altura = 2, anioDeObtencion = 2010 )
+	
+	assert.equals(12,soja1.horasDeSolQueTolera ())
+	
+	// Parcela
+	
+	const parcela = new Parcela( ancho = 10, largo = 1, horasDeSol = 10, plantas = #{soja1,soja2,soja3,soja4,soja5})
+
+	assert.notThat(parcela.tieneSangreJoven())
+}
